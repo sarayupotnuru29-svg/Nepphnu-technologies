@@ -23,11 +23,11 @@ const services = [
   { image: humidityImg, title: "Customized Test Programs", desc: "Tailored testing protocols aligned with client requirements and standards." },
 ];
 
-import defenceIcon from "@/assets/defence-testing.jpg";
-import electronicsIcon from "@/assets/electronics-testing.jpg";
-import automotiveIcon from "@/assets/automotive-testing.jpg";
-import industrialIcon from "@/assets/industrial-testing.jpg";
-import aerospaceIcon from "@/assets/aerospace-testing.jpg";
+import defenceIcon from "@/assets/icon-defence.png";
+import electronicsIcon from "@/assets/icon-electronics.png";
+import automotiveIcon from "@/assets/icon-automotive.png";
+import industrialIcon from "@/assets/icon-industrial.png";
+import aerospaceIcon from "@/assets/icon-aerospace.png";
 
 const industries = [
   { image: defenceIcon, title: "Defence & Aerospace" },
@@ -134,9 +134,7 @@ const Home = () => {
                 transition={{ duration: 0.3 }}
                 className="flex flex-col items-center gap-3"
               >
-                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-accent/30">
-                  <img src={ind.image} alt={ind.title} className="w-full h-full object-cover" />
-                </div>
+                <img src={ind.image} alt={ind.title} className="w-24 h-24 object-contain" />
                 <span className="text-primary-foreground font-display font-semibold text-sm text-center">{ind.title}</span>
               </motion.div>
             ))}
