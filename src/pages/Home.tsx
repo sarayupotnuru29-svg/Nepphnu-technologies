@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Shield, Target, CheckCircle, Plane, Monitor, Car, Truck, Rocket } from "lucide-react";
+import { Shield, Target, CheckCircle } from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
-import IndustryCard from "@/components/IndustryCard";
 import QuoteForm from "@/components/QuoteForm";
 import heroChamber from "@/assets/hero-chamber.jpg";
 import vibrationImg from "@/assets/vibration-testing.jpg";
@@ -24,12 +23,18 @@ const services = [
   { image: humidityImg, title: "Customized Test Programs", desc: "Tailored testing protocols aligned with client requirements and standards." },
 ];
 
+import defenceIcon from "@/assets/defence-testing.jpg";
+import electronicsIcon from "@/assets/electronics-testing.jpg";
+import automotiveIcon from "@/assets/automotive-testing.jpg";
+import industrialIcon from "@/assets/industrial-testing.jpg";
+import aerospaceIcon from "@/assets/aerospace-testing.jpg";
+
 const industries = [
-  { icon: Shield, title: "Defence & Aerospace" },
-  { icon: Monitor, title: "Electronics & Systems" },
-  { icon: Car, title: "Automotive Components" },
-  { icon: Truck, title: "Industrial Equipment" },
-  { icon: Rocket, title: "Aerospace & Avionics" },
+  { image: defenceIcon, title: "Defence & Aerospace" },
+  { image: electronicsIcon, title: "Electronics & Systems" },
+  { image: automotiveIcon, title: "Automotive Components" },
+  { image: industrialIcon, title: "Industrial Equipment" },
+  { image: aerospaceIcon, title: "Aerospace & Avionics" },
 ];
 
 const Home = () => {
@@ -62,9 +67,9 @@ const Home = () => {
               NEPPHNU TECHNOLOGIES PVT. LTD. delivers controlled environmental simulation and reliability testing services designed to validate product durability, performance and operational readiness under defined stress conditions.
             </p>
             <div className="flex flex-wrap gap-4">
-              <button onClick={handleQuoteClick} className="px-6 py-3 rounded-lg bg-accent text-accent-foreground font-semibold hover:bg-blue-bright transition-colors">
-                Request a Quotation
-              </button>
+              <Link to="/services" className="px-6 py-3 rounded-lg bg-accent text-accent-foreground font-semibold hover:bg-blue-bright transition-colors">
+                Our Services
+              </Link>
               <Link to="/contact" className="px-6 py-3 rounded-lg border-2 border-primary-foreground/40 text-primary-foreground font-semibold hover:bg-primary-foreground/10 transition-colors">
                 Contact Us
               </Link>
@@ -119,9 +124,21 @@ const Home = () => {
             <h2 className="section-heading-light">Industries We Serve</h2>
             <div className="heading-line-light" />
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
             {industries.map((ind) => (
-              <IndustryCard key={ind.title} icon={ind.icon} title={ind.title} />
+              <motion.div
+                key={ind.title}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3 }}
+                className="flex flex-col items-center gap-3"
+              >
+                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-accent/30">
+                  <img src={ind.image} alt={ind.title} className="w-full h-full object-cover" />
+                </div>
+                <span className="text-primary-foreground font-display font-semibold text-sm text-center">{ind.title}</span>
+              </motion.div>
             ))}
           </div>
         </div>
